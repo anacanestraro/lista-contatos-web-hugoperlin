@@ -22,8 +22,6 @@ public class AddController {
     }
 
     public Handler get = (Context ctx)->{
-
-
         ctx.render("templates/add.peb");
     };
 

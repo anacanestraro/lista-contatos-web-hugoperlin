@@ -1,7 +1,11 @@
 {% extends "templates/base.peb" %}
 {% block content %}
 {% if resultado != null %}
-    {{resultado.getMsg}}
+    {% if resultado.foiErro %}
+        <h3 style="color:red"> {{resultado.getMsg}}</h3>
+    {% else %}
+    <h3 style="color:green"> {{resultado.getMsg}}</h3>
+    {% endif  %}
 {% endif %}
 
 <h1>Adicionar Contato</h1>
