@@ -1,18 +1,11 @@
 package ifpr.pgua.eic.tads.contatos.model;
 
-public class Tarefa {
+public class Categoria {
     private int id;
     private String titulo;
     private String descricao;
-    private Categoria categoria;
     
-    public Tarefa(String titulo, String descricao, Categoria categoria) {
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.categoria = categoria;
-    }
-    
-    public Tarefa(int id, String titulo, String descricao) {
+    public Categoria(int id, String titulo, String descricao) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -42,20 +35,6 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Tarefa [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + "]";
-    }
-    
     
     
 }

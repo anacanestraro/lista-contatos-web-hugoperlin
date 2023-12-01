@@ -1,0 +1,16 @@
+{% extends "templates/base.peb" %}
+
+{% block content %}
+
+{% if resultado.foiErro %}
+<h1> {{ resultado.getMsg }}</h1>
+{% else %}
+    <ul>
+    {% for contato in lista %}
+        <li>{{contato.nome}}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% endblock %}

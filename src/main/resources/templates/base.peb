@@ -4,7 +4,7 @@
         <title>Meu App de Contatos</title>
     </head>
     <body>
-        <h1>App de Contatos e Tarefas</h1>
+
         <div>
             {% block content %}
             {% endblock %}

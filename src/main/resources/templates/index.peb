@@ -1,13 +1,11 @@
 {% extends "templates/base.peb" %}
 
 {% block content %}
+    <h1>Meus contatos!!!</h1>
+    <a href="/add">Cadastrar Contato</a>
+    <a href="/list">Listar Contatos</a>
+    <h1>Minhas Tarefas!!!</h1>
+    <a href="/addTarefa">Cadastrar Tarefa</a>
+    <a href="/listTarefa">Listar Tarefas</a>
+{% endblock %}    
 
-<h1>Meus contatos!!!</h1>
-<a href="/add">Cadastrar Contato</a>
-<a href="/list">Listar Contatos</a>
-<h1>Minhas Tarefas!!!</h1>
-<a href="/addTarefa">Cadastrar Tarefa</a>
-<a href="/listTarefa">Listar Tarefas</a>
-
-
-{% endblock %}

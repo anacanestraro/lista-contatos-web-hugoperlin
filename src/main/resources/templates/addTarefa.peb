@@ -1,0 +1,24 @@
+{% extends "templates/base.peb" %}
+{% block content %}
+{% if resultado != null %}
+    {{resultado.getMsg}}
+{% endif %}
+<h1>Adicionar Tarefa</h1>
+<form method="post" action="/addTarefa">
+    <label for="titulo">Titulo:</label>
+    <input type="text" id="titulo" name="titulo" value="{{titulo}}"/><br />
+    <label for="descricao">Descricao:</label>
+    <input type="text" id="descricao" name="descricao" value="{{descricao}}"/><br />
+    <label for="categoria">Categoria:</label>
+    <select name="categoria" id="categoria" value="{{categoriaId}}">
+        {% for categoria in categorias%}
+            <option value="{{categoria.id}}" 
+            {% if categoria.id == categoriaId %}
+            selected
+            {% endif %}
+            >{{categoria.titulo}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" />
+</form>
+{% endblock %}

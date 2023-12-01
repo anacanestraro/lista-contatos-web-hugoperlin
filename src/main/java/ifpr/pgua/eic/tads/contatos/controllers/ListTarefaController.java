@@ -2,34 +2,37 @@ package ifpr.pgua.eic.tads.contatos.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import ifpr.pgua.eic.tads.contatos.model.Agenda;
+import com.github.hugoperlin.results.Resultado;
+
 import ifpr.pgua.eic.tads.contatos.model.Contato;
 import ifpr.pgua.eic.tads.contatos.model.Tarefa;
+import ifpr.pgua.eic.tads.contatos.model.repositories.TarefaRepository;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
 public class ListTarefaController {
     
-    private Agenda agenda;
+    private TarefaRepository repository;
 
-    public ListTarefaController(Agenda agenda){
-        this.agenda = agenda;
+    public ListTarefaController(TarefaRepository repository){
+        this.repository = repository;
     }
 
     public Handler get = (Context ctx)->{
         
-        ArrayList<Tarefa> lista = agenda.getTarefas();
+        Resultado<List<Tarefa>> resultado = repository.listarTodas();
         
-        String html="<html><head><meta charset=\"UTF-8\"></head><body><h1>Lista de Contatos</h1><ul>";
+        Map<String,Object> model = new HashMap<>();
 
-        for(Tarefa t:lista){
-            html+="<li>"+t.toString()+"</li>";
+        model.put("resultado", resultado);
+        if(resultado.foiSucesso()){
+            model.put("lista", resultado.comoSucesso().getObj());
         }
-        
-        html+="</ul><a href=\"/\">Voltar</a></body></html>";
-        ctx.html(html);
+
+        ctx.render("templates/listTarefas.peb", model);
     };
 
 

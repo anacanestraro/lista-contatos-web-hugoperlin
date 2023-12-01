@@ -21,21 +21,18 @@ public class ListController {
     }
 
     public Handler get = (Context ctx)->{
-        String html="<html><head><meta charset=\"UTF-8\"></head><body><h1>Lista de Contatos</h1><ul>";
-
+        
         Resultado<List<Contato>> resultado = repositorio.listarTodos();
+        
+        Map<String,Object> model = new HashMap<>();
 
-        if(resultado.foiErro()){
-            html += "<h1>"+resultado.getMsg()+"</h1>";
-        }else{
-            List<Contato> lista = resultado.comoSucesso().getObj();
-            for(Contato c:lista){
-                html+="<li>"+c.toString()+"</li>";
-            }
+        model.put("resultado", resultado);
+        if(resultado.foiSucesso()){
+            model.put("lista", resultado.comoSucesso().getObj());
         }
 
-        html+="</ul><a href=\"/\">Voltar</a></body></html>";
-        ctx.html(html);
+        ctx.render("templates/listContatos.peb", model);
+        
     };
 
 
